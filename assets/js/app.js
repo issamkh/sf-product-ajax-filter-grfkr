@@ -5,19 +5,15 @@
  * (and its CSS file) in your base layout (base.html.twig).
  */
 
-// any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
 
 import noUiSlider from 'noUiSlider';
 import 'nouislider/distribute/nouislider.css'
+import Filter from './modules/Filter';
 
-// Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-// const $ = require('jquery');
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+new Filter(document.querySelector('.js-filter'))
 
 const slider = document.getElementById('price-slider');
-
-
 
 if(slider){
     const min = document.getElementById('min');
