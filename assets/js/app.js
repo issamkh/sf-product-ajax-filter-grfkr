@@ -37,8 +37,10 @@ if(slider){
         }else{
             max.value= parseInt(values[1]);
         }
+    })
 
+    range.on('end' , function(values, handle){
 
-
+        min.dispatchEvent(new Event('change'))
     })
 }

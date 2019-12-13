@@ -31,11 +31,15 @@ class ProductController extends AbstractController
         [$min,$max] = $repository->findMinMax($data);
         $products = $repository->findSearch($data);
 
-        if($request->isXmlHttpRequest()){
+        if($request->get('ajax')){
 
             return new JsonResponse([
                 'content' => $this->renderView('product/_products.html.twig', ['products' => $products]),
-                'sorting' => $this->renderView('product/_sorting.html.twig', ['products' => $products])
+                'sorting' => $this->renderView('product/_sorting.html.twig', ['products' => $products]),
+                'pagination' => $this->renderView('product/_pagination.html.twig', ['products' => $products]),
+                'pages' => ceil($products->getTotalItemCount() / $products->getItemNumberPerPage()),
+                'min' => $min,
+                'max' => $max
             ]);
         }
         return $this->render('product/index.html.twig', [

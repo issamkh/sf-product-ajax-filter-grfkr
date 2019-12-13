@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container js-filter">
         <div class="row">
-            <div class="col-md-3 js-filter-form">
+            <div class="col-md-3 ">
                 {% include 'Product/_filter.html.twig' with{form:form }  %}
             </div>
             <div class="col-md-9">
@@ -19,7 +19,8 @@
 
                 </div>
                 <div class="mt-4 js-filter-pagination">
-                    {{ knp_pagination_render(products) }}
+                    {% include 'product/_pagination.html.twig' with{products: products} only %}
+
                 </div>
             </div>
         </div>
