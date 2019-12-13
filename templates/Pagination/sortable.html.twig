@@ -1,14 +1,14 @@
 
-<a{% for attr, value  in options | merge({class: 'btn btn-primary ml-2'}) %} {{ attr }}="{{ value }}"{% endfor %} style="color: #000;">
-<span class="pull-right">
-        {% if sorted %}
-            {% if direction == 'desc' %}
-                <i class="glyphicon glyphicon-sort-by-attributes-alt"></i>
+<a{% for attr, value  in options | merge({class: 'btn btn-secondary ml-2'})%} {{ attr }}="{{ value }}"{% endfor %}>
+<span class="float-right">
+        {% if app.request.get('sort') == key %}
+            {% if app.request.get('direction') == 'desc' %}
+                <i class="fa fa-sort-down"></i>
             {% else %}
-                <i class="glyphicon glyphicon-sort-by-attributes"></i>
+                <i class="fa fa-sort-up"></i>
             {% endif %}
         {% else %}
-            <i class="glyphicon glyphicon-sort" style="color: #d2d6de;"></i>
+            <i class="fa fa-sort"></i>
         {% endif %}
     </span>
 {{ title }}
